@@ -1,0 +1,22 @@
+.statTable__title {
+	text-align: right;
+}
+
+.statTable__meterCell {
+	width: 100%;
+}
+
+.statTable__meterCell meter {
+	width: 100%;
+}
+
+.statTable__meterCell meter::-webkit-meter-bar {
+	height: 4px;
+	width: 100%;
+	border: none;
+	border-radius: 4px;
+}
+
+.statTable__meterCell meter::-webkit-meter-inner-element {
+	border-radius: 4px;
+}

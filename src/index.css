@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+}
+
+body {
+    font-family: Poppins;
+}
+
+h1 {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+h3 {
+    font-size: 8px;
+    line-height: 12px;
+    font-weight: normal;
+}
+
+:root {
+    --primaryColor-brand: #DC0A2D;
+    --color-bug: #A7B723;
+    --color-grass: #74CB48;
+    --color-fire: #F57D31;
+    --color-flying: #A891EC;
+    --color-normal: #AAA67F;
+    --color-poison: #A43E9E;
+    --color-water: #6493EB;
+}
+
+.--bug {
+    background: var(--color-bug);
+}
+
+.textColor--bug {
+    color: var(--color-bug);
+}
+
+.--grass {
+    background: var(--color-grass);
+}
+
+.textColor--grass {
+    color: var(--color-grass);
+}
+
+.--fire {
+    background: var(--color-fire);
+}
+
+.textColor--fire {
+    color: var(--color-fire);
+}
+
+.--flying {
+    background: var(--color-flying);
+}
+
+.textColor--flying {
+    color: var(--color-flying);
+}
+
+.--normal {
+    background: var(--color-normal);
+}
+
+.textColor--normal {
+    color: var(--color-normal);
+}
+
+.--poison {
+    background: var(--color-poison);
+}
+
+.textColor--poison {
+    color: var(--color-poison);
+}
+
+.--water {
+    background: var(--color-water);
+}
+
+.textColor--water {
+    color: var(--color-water);
+}

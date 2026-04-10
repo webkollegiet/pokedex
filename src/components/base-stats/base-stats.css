@@ -1,0 +1,11 @@
+.statsWrapper h2 {
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+}
+
+.statTable {
+  width: 100%;
+  font-size: 10px;
+  line-height: 16px;
+}

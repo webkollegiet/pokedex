@@ -1,0 +1,9 @@
+.movesList {
+  list-style: none;
+}
+
+.movesList__item {
+  text-transform: capitalize;
+  font-size: 10px;
+  line-height: 16px;
+}
