@@ -4,8 +4,10 @@ import "./weight.css";
 export default function Weight({weight}) {
   return (
     <div className="weightWrapper">
-      <RiWeightLine />
-      <span>{weight / 10} kg</span>
+      <div>
+        <RiWeightLine />
+        <span>{weight / 10} kg</span>
+      </div>
       <h3>Weight</h3>
     </div>
   );

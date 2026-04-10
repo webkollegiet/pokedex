@@ -2,7 +2,7 @@ import "./moves.css";
 
 export default function Moves({moves}) {
   return (
-    <div>
+    <div className="movesWrapper">
       <ul className="movesList">
         {moves.map(e => <li className="movesList__item" key={e.ability.name}>{e.ability.name}</li>)}
       </ul>

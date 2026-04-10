@@ -1,3 +1,11 @@
+.weightWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-right: 1px solid var(--primaryColor-lightgrey);
+}
+
 .weightWrapper span {
   font-size: 10px;
   line-height: 16px;
