@@ -11,5 +11,5 @@ export default function BaseStats({stats, type}) {
         </tbody>
       </table>
     </section>
-  )
+  );
 }

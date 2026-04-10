@@ -1,5 +1,11 @@
 .statTable__title {
 	text-align: right;
+	border-right: 1px solid var(--primaryColor-lightgrey);
+	padding: 0 0.8rem;
+}
+
+.statTable__statCell {
+	padding: 0 0.8rem;
 }
 
 .statTable__meterCell {

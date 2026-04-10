@@ -23,10 +23,13 @@ h3 {
     font-size: 8px;
     line-height: 12px;
     font-weight: normal;
+    color: var(--primaryColor-mediumgrey);
 }
 
 :root {
     --primaryColor-brand: #DC0A2D;
+    --primaryColor-lightgrey: #E0E0E0;
+    --primaryColor-mediumgrey: #666666;
     --color-bug: #A7B723;
     --color-grass: #74CB48;
     --color-fire: #F57D31;
