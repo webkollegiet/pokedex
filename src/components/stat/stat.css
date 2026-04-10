@@ -21,8 +21,10 @@
 	width: 100%;
 	border: none;
 	border-radius: 4px;
+	background-color: color(from var(--meter-color) srgb r g b / 0.2);
 }
 
-.statTable__meterCell meter::-webkit-meter-inner-element {
+.statTable__meterCell meter::-webkit-meter-optimum-value {
 	border-radius: 4px;
+	background-color: var(--meter-color);
 }

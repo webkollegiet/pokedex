@@ -15,7 +15,7 @@ export default function Stat({stat, type}) {
 			<th className={"statTable__title textColor--" + type}>{statName[stat.stat.name]}</th>
 			<td className="statTable__statCell">{stat.base_stat.toString().padStart(3, "0")}</td>
 			<td className="statTable__meterCell">
-				<meter max="230" value={stat.base_stat} /* className={"--" + type} */ />
+				<meter max="230" value={stat.base_stat} style={{ '--meter-color': `var(--color-${type})` }} />
 			</td>
 		</tr>
 	);
