@@ -30,7 +30,7 @@ export default function useFetch(url, options = {}) {
 
     useEffect(function() {
         doFetch(url, options);
-    }, []);
+    }, [url]);
 
     return {data, loading, error};
 }
