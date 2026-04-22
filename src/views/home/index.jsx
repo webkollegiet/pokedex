@@ -50,12 +50,14 @@ export default function Home() {
 
 	useEffect(function () {
 		if (!keyword.length) {
+			setOffset(() => 0);
 			data && setPokemonList(prevState => [...data.results]);
 			return;
 		}
 		if (keyword.length < 2) return;
 
 		const filteredList = shadowList.results.filter(element => element.name.toLowerCase().includes(keyword.toLowerCase()));
+		setOffset(() => 0);
 		setPokemonList(filteredList);
 	}, [keyword]);
 
