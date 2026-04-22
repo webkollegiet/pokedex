@@ -15,7 +15,18 @@ export default function Home() {
 	const [pokemonList, setPokemonList] = useState([]);
 
 	useEffect(function () {
-		data && setPokemonList((prevList) => [...prevList, ...data.results]);
+		data && setPokemonList((prevList) => {
+
+			const seen = new Set(prevList.map((p) => p.url));
+
+			const uniqueIncoming = data.results.filter((p) => {
+				if (seen.has(p.url)) return false;
+				seen.add(p.url);
+				return true;
+			});
+
+			return [...prevList, ...uniqueIncoming]
+		});
 	}, [data]);
 
 	useEffect(function () {
