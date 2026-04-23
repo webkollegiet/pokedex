@@ -24,7 +24,7 @@ export default function ImageSlider({ sprites }) {
       {currentSlide > 0 ? (<button className="imageSlider__button" onClick={prevSlide}>
         <FaChevronLeft />
       </button>) : <span />}
-      <img src={slideArray[currentSlide]} className="imageSlider__image" />
+      <img loading="lazy" src={slideArray[currentSlide]} className="imageSlider__image" />
       {currentSlide < slideArray.length - 1 ? (<button className="imageSlider__button" onClick={nextSlide}>
         <FaChevronRight />
       </button>) : <span />}

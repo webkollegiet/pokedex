@@ -1,65 +1,60 @@
+import { useRef, useEffect, useState, useContext } from "react";
+import { useSearchParams } from "react-router-dom";
 import PokeCard from "../../components/pokecard";
 import useFetch from "../../hooks/use-fetch";
 import MainHeader from "../../components/main-header";
-import "./home.css";
-import { useRef, useEffect, useState, useContext } from "react";
 import { searchContext } from "../../contexts/searchContext";
+import "./home.css";
 
 export default function Home() {
 	const { keyword } = useContext(searchContext);
-	const limit = 30;
-	const [offset, setOffset] = useState(0);
-	const { data } = useFetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`);
-	const { data: shadowList } = useFetch(`https://pokeapi.co/api/v2/pokemon?limit=1400`);
+	const [limit, setLimit] = useState(30);
+	const { data } = useFetch(`https://pokeapi.co/api/v2/pokemon?limit=1400`);
 	const pokeRef = useRef(null);
 	const [pokemonList, setPokemonList] = useState([]);
+	const [searchParams] = useSearchParams();
 
 	useEffect(function () {
-		data && setPokemonList((prevList) => {
-
-			const seen = new Set(prevList.map((p) => p.url));
-
-			const uniqueIncoming = data.results.filter((p) => {
-				if (seen.has(p.url)) return false;
-				seen.add(p.url);
-				return true;
-			});
-
-			return [...prevList, ...uniqueIncoming]
-		});
+		data && setPokemonList(() => data.results.slice(0, limit));
 	}, [data]);
 
 	useEffect(function () {
-		if (!pokeRef.current) return
-		if (keyword.length) return
+		if (!data) return;
+		if (!pokeRef.current) return;
+		if (keyword.length) return;
+
 		let observer = new IntersectionObserver(
 			function (entries) {
 				if (entries[0].isIntersecting) {
+					console.log("is intersecting", pokeRef.current);
 					observer.unobserve(pokeRef.current);
-					setOffset(prevOffset => prevOffset + limit);
+					setPokemonList(() => data.results.slice(0, limit + 30));
+					setLimit(prevLimit => prevLimit + limit);
 				}
 			}
 		);
 
-		const timeout = setTimeout(function () {
-			observer.observe(pokeRef.current);
-		}, 1000);
-
-		return () => clearTimeout(timeout);
+		observer.observe(pokeRef.current);
 	}, [pokemonList]);
 
 	useEffect(function () {
+		if (!data) return;
 		if (!keyword.length) {
-			setOffset(() => 0);
-			data && setPokemonList(prevState => [...data.results]);
+			setLimit(() => 30);
+			data && setPokemonList(prevState => [...data.results.slice(0, limit)]);
 			return;
 		}
 		if (keyword.length < 2) return;
 
-		const filteredList = shadowList.results.filter(element => element.name.toLowerCase().includes(keyword.toLowerCase()));
-		setOffset(() => 0);
-		setPokemonList(filteredList);
-	}, [keyword]);
+		const filteredList = data && data.results
+			.filter(element => (
+				element.name.toLowerCase()
+					.includes(searchParams.get("search").toLowerCase())
+			));
+
+		setLimit(() => 30);
+		setPokemonList(() => filteredList);
+	}, [data, keyword, searchParams]);
 
 	return (
 		<div className="homeWrapper" style={{ backgroundColor: "var(--primaryColor-brand)" }}>

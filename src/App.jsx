@@ -7,15 +7,15 @@ import SearchProvider from "./contexts/searchContext";
 export default function App() {
 
   return (
-    <SearchProvider>
-      <TypeContextProvider>
-        <BrowserRouter>
+    <TypeContextProvider>
+      <BrowserRouter>
+        <SearchProvider>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/pokemon/:id" element={<Pokemon />} />
           </Routes>
-        </BrowserRouter>
-      </TypeContextProvider>
-    </SearchProvider>
+        </SearchProvider>
+      </BrowserRouter>
+    </TypeContextProvider>
   );
 }
